@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <div>
+        <form action="/upc/" method="post">{% csrf_token %}
+            Search: <input type="text" name="search" placeholder="Enter product ID" />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Tilte</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in upcrecords %}
+            <tr>
+                <td>{{ data.prodid }}</td>
+                <td>{{ data.title }}</td>
+                <td>{{ data.price }}</td>
+                <!-- <td>{{ data.user }}</td>
+                <td>{{ data.contact_no }}</td>
+                <td>{{ data.emails }}</td> -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
